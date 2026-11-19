@@ -1,0 +1,1085 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberKids | أبطال العالم الرقمي</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #3478f6;
+  --dark: #23345b;
+  --purple: #8157e8;
+  --pink: #ff76a8;
+  --yellow: #ffd66b;
+  --green: #35b98b;
+  --bg: #f3f7ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(135deg, #eef5ff, #f8f1ff);
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+header {
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  color: var(--blue);
+}
+
+.logo span {
+  color: var(--purple);
+}
+
+main {
+  max-width: 1050px;
+  margin: 25px auto;
+  padding: 15px;
+}
+
+.page {
+  display: none;
+  animation: appear .35s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  background: white;
+  border-radius: 28px;
+  padding: 35px;
+  box-shadow: 0 12px 35px rgba(45, 76, 140, .09);
+  margin-bottom: 22px;
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 25px;
+}
+
+.hero-emoji {
+  font-size: 85px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: clamp(29px, 5vw, 46px);
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+h2 {
+  color: var(--blue);
+  font-size: 27px;
+}
+
+h3 {
+  color: var(--purple);
+}
+
+p, li {
+  font-size: 17px;
+  line-height: 2;
+}
+
+.subtitle {
+  color: #71809e;
+  font-size: 18px;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  border-radius: 15px;
+  padding: 13px 23px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+  margin: 5px;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  filter: brightness(.97);
+}
+
+.primary {
+  background: var(--blue);
+  color: white;
+}
+
+.secondary {
+  background: #eee8ff;
+  color: var(--purple);
+}
+
+.success {
+  background: #dff8ee;
+  color: #16845f;
+}
+
+.back {
+  background: #edf1fa;
+  color: #53627f;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #e4eafa;
+  border-radius: 13px;
+  font-family: inherit;
+  font-size: 16px;
+  margin: 8px 0 18px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--blue);
+}
+
+label {
+  display: block;
+  font-weight: 800;
+}
+
+.notice {
+  background: #fff6db;
+  color: #80601a;
+  padding: 14px;
+  border-radius: 13px;
+  margin: 18px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 17px;
+  margin-top: 22px;
+}
+
+.info-card {
+  background: #f6f8ff;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #e8edfa;
+}
+
+.info-card .emoji {
+  font-size: 35px;
+}
+
+.info-card h3 {
+  margin: 8px 0;
+}
+
+.stat {
+  background: linear-gradient(135deg, #eef4ff, #f5edff);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 37px;
+  color: var(--purple);
+}
+
+.quiz-progress {
+  height: 11px;
+  background: #edf0f8;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 18px 0;
+}
+
+.quiz-progress div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  width: 0%;
+  transition: .3s;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  text-align: right;
+  background: #f4f6fc;
+  color: var(--dark);
+  margin: 10px 0;
+  border: 2px solid transparent;
+}
+
+.option:hover {
+  background: #edf2ff;
+}
+
+.option.selected {
+  border-color: var(--blue);
+  background: #eaf1ff;
+}
+
+.option.correct {
+  border-color: var(--green);
+  background: #e2f8ef;
+}
+
+.option.wrong {
+  border-color: #f17a89;
+  background: #fff0f1;
+}
+
+.feedback {
+  padding: 13px;
+  border-radius: 13px;
+  margin-top: 15px;
+  display: none;
+}
+
+#simulationReveal {
+  margin-top: 20px;
+}
+
+.result {
+  text-align: center;
+  padding: 45px 20px;
+}
+
+.result-score {
+  font-size: 65px;
+  color: var(--purple);
+  font-weight: 900;
+}
+
+footer {
+  text-align: center;
+  color: #8793aa;
+  padding: 30px;
+}
+
+@media(max-width:600px) {
+  .card { padding: 23px 18px; }
+  .hero { padding: 40px 15px; }
+  header { padding: 15px 5%; }
+  p, li { font-size: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🛡️ Cyber<span>Kids</span></div>
+  <div>🌐 العالم الرقمي الآمن</div>
+</header>
+
+<main>
+
+<!-- PAGE 1: HOME -->
+<section class="page active" id="page1">
+  <div class="card hero">
+    <div class="hero-emoji">🦸‍♀️</div>
+    <h1>مرحبًا بك في عالم CyberKids!</h1>
+    <p class="subtitle">
+      مغامرة ممتعة لاكتشاف أسرار الإنترنت وتعلّم كيف تحمي نفسك في العالم الرقمي.
+    </p>
+    <div class="buttons">
+      <button class="primary" onclick="go(2)">ابدأ المغامرة 🚀</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 2: SIMULATION -->
+<section class="page" id="page2">
+  <div class="card">
+    <h2>🔍 هل تعرف قيمة معلوماتك الشخصية؟</h2>
+    <p>تخيّل أنك دخلت إلى موقع يطلب منك بعض المعلومات. ماذا ستفعل؟</p>
+
+
+    <form id="simulationForm" onsubmit="simulate(event)">
+      <label>الاسم</label>
+      <input type="text" placeholder="أدخل اسمك">
+
+      <label>اللقب</label>
+      <input type="text" placeholder="أدخل لقبك">
+
+      <label>رقم الهاتف</label>
+      <input type="tel" placeholder="أدخل رقم هاتفك">
+
+      <label>معلومات إضافية</label>
+      <input type="text" placeholder="أدخل معلومات إضافية">
+
+      <div class="buttons">
+        <button class="primary" type="submit">إرسال المعلومات للتحقّق 📩</button>
+        <button class="success" type="button" onclick="safeChoice()">لن أشارك معلوماتي 🛡️</button>
+      </div>
+    </form>
+
+    <div id="simulationReveal"></div>
+
+    <div class="buttons">
+      <button class="back" onclick="go(1)">السابق</button>
+      <button class="primary" onclick="go(3)">التالي</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 3: RISKS -->
+<section class="page" id="page3">
+  <div class="card">
+    <h2>⚠️ المخاطر في العالم الرقمي</h2>
+    <p>الإنترنت عالم واسع ومفيد، لكنه يحتوي أيضًا على مخاطر يجب أن نتعرّف إليها.</p>
+
+    <div class="grid">
+
+      <div class="info-card">
+        <div class="emoji">🎣</div>
+        <h3>التصيّد الإلكتروني</h3>
+        <p>رسائل أو مواقع مزيفة تحاول خداع المستخدم للحصول على معلوماته الشخصية أو بيانات حساباته.</p>
+        <p><b>مثال:</b> رسالة تخبرك أنك ربحت جائزة وتطلب منك إدخال معلوماتك.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🔐</div>
+        <h3>سرقة الحسابات</h3>
+        <p>محاولة الوصول إلى حساب شخص آخر دون إذنه، وقد يؤدي ذلك إلى فقدان الخصوصية.</p>
+        <p><b>مثال:</b> استعمال كلمة مرور مسروقة للدخول إلى حساب.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">💬</div>
+        <h3>التنمّر الإلكتروني</h3>
+        <p>إيذاء شخص أو السخرية منه أو تهديده عبر الرسائل أو التعليقات أو المنصات الرقمية.</p>
+        <p><b>مثال:</b> نشر تعليق مهين عن زميل في مجموعة.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🎭</div>
+        <h3>انتحال الشخصية</h3>
+        <p>إنشاء حساب أو استعمال حساب شخص آخر للتظاهر بأنه شخص مختلف.</p>
+        <p><b>مثال:</b> حساب يستعمل صورة صديقك ويتحدث باسمِه.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🔗</div>
+        <h3>الروابط المشبوهة</h3>
+        <p>روابط قد تقود إلى مواقع مزيفة أو صفحات تحاول جمع معلوماتك.</p>
+        <p><b>مثال:</b> رابط غريب يصلك من حساب لا تعرفه.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🧩</div>
+        <h3>البرمجيات الضارة</h3>
+        <p>برامج قد تؤثر في الجهاز أو تحاول الوصول إلى بياناته دون موافقة صاحبه.</p>
+        <p><b>مثال:</b> ملف مجهول يتم تنزيله من مصدر غير موثوق.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">📢</div>
+        <h3>الأخبار الزائفة</h3>
+        <p>معلومات غير صحيحة يتم نشرها وكأنها حقائق، وقد تؤثر في آراء الناس.</p>
+        <p><b>مثال:</b> خبر غير موثوق ينتشر بسرعة دون التحقق من مصدره.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🚨</div>
+        <h3>الابتزاز الإلكتروني</h3>
+        <p>تهديد شخص بنشر معلومات أو محتويات خاصة بهدف إجباره على القيام بشيء ما.</p>
+        <p><b>مثال:</b> شخص يهدد بنشر محادثة خاصة للضغط على صاحبها.</p>
+      </div>
+
+    </div>
+
+    <h3>ما آثار هذه المخاطر؟</h3>
+    <ul>
+      <li>فقدان الخصوصية وسرقة المعلومات.</li>
+      <li>خسارة الوصول إلى الحسابات.</li>
+      <li>الشعور بالخوف أو القلق.</li>
+      <li>الإضرار بالعلاقات الاجتماعية والثقة بين الأشخاص.</li>
+      <li>انتشار معلومات خاطئة وصعوبة التمييز بين الحقيقة والكذب.</li>
+    </ul>
+
+    <div class="buttons">
+      <button class="back" onclick="go(2)">السابق</button>
+      <button class="primary" onclick="go(4)">التالي</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 4: STATISTICS -->
+<section class="page" id="page4">
+  <div class="card">
+    <h2>📊 ماذا تقول الإحصائيات؟</h2>
+    <p>تساعدنا الإحصائيات على فهم مدى أهمية حماية الأطفال والشباب في العالم الرقمي.</p>
+
+    <div class="grid">
+      <div class="stat">
+        <strong>1 من 3</strong>
+        <p>من مستخدمي الإنترنت في العالم هو طفل، حسب تقديرات اليونيسف سنة 2017.</p>
+      </div>
+
+      <div class="stat">
+        <strong>1 من 3</strong>
+        <p>من الشباب الذين شملهم استطلاع اليونيسف في 30 دولة تقريبًا أفادوا بتعرضهم للتنمّر الإلكتروني.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      📌 هذه أرقام دولية وليست إحصائيات خاصة بتونس. كما تختلف النتائج حسب البلدان وطريقة إجراء الدراسات.
+    </div>
+
+    <h3>مصادر المعلومات</h3>
+    <ul>
+      <li>
+        <a href="https://www.unicef.org/reports/state-worlds-children-2017" target="_blank">
+          تقرير اليونيسف: حالة أطفال العالم 2017
+        </a>
+      </li>
+      <li>
+        <a href="https://www.unicef.org/press-releases/unicef-poll-more-third-young-people-30-countries-report-being-victim-online" target="_blank">
+          استطلاع اليونيسف حول التنمّر الإلكتروني
+        </a>
+      </li>
+    </ul>
+
+    <div class="buttons">
+      <button class="back" onclick="go(3)">السابق</button>
+      <button class="primary" onclick="go(5)">التالي</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 5: PROTECTION -->
+<section class="page" id="page5">
+  <div class="card">
+    <h2>🛡️ كيف نحمي أنفسنا؟</h2>
+    <p>اتباع بعض العادات البسيطة يساعدنا على استعمال الإنترنت بطريقة أكثر أمانًا.</p>
+
+    <div class="grid">
+      <div class="info-card">
+        <div class="emoji">🔑</div>
+        <h3>كلمة مرور قوية</h3>
+        <p>استعمل كلمة مرور طويلة يصعب تخمينها، ولا تشاركها مع الآخرين.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🙈</div>
+        <h3>حماية الخصوصية</h3>
+        <p>لا تنشر عنوانك أو رقم هاتفك أو معلوماتك الشخصية على الإنترنت.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🔍</div>
+        <h3>التحقق من الروابط</h3>
+        <p>تأكد من مصدر الرابط قبل فتحه، ولا تثق في الرسائل التي تعدك بجوائز غير متوقعة.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">📱</div>
+        <h3>حماية الجهاز</h3>
+        <p>حدّث جهازك وتطبيقاتك، واستعمل وسائل الحماية المتوفرة.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🤝</div>
+        <h3>التعامل مع الغرباء</h3>
+        <p>لا تثق بسرعة في أشخاص لا تعرفهم، ولا تقبل طلبات أو مقابلات غير آمنة.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🧠</div>
+        <h3>فكّر قبل النشر</h3>
+        <p>اسأل نفسك: هل هذه المعلومة آمنة؟ هل أقبل أن يراها الجميع؟</p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="back" onclick="go(4)">السابق</button>
+      <button class="primary" onclick="go(6)">التالي</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 6: WHAT TO DO -->
+<section class="page" id="page6">
+  <div class="card">
+    <h2>🚨 ماذا أفعل إذا واجهت خطرًا؟</h2>
+    <p>إذا واجهت موقفًا مزعجًا أو خطرًا على الإنترنت، لا تتصرف وحدك.</p>
+
+    <div class="info-card">
+      <h3>🔐 إذا تعرض حسابك للاختراق</h3>
+      <ul>
+        <li>أخبر شخصًا بالغًا تثق به.</li>
+        <li>استعمل وسائل استرجاع الحساب الرسمية.</li>
+        <li>غيّر كلمة المرور إذا استعدت الوصول إلى الحساب.</li>
+        <li>فعّل التحقق بخطوتين.</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h3>💬 إذا تعرضت للتنمّر الإلكتروني</h3>
+      <ul>
+        <li>لا تدخل في جدال أو ردود انتقامية.</li>
+        <li>احتفظ بما يثبت ما حدث بطريقة آمنة.</li>
+        <li>استعمل خاصية الحظر والتبليغ.</li>
+        <li>اطلب مساعدة شخص بالغ تثق به.</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h3>🚨 إذا تعرضت للابتزاز</h3>
+      <ul>
+        <li>لا تستجب للتهديدات ولا ترسل معلومات إضافية.</li>
+        <li>لا تواجه الشخص وحدك.</li>
+        <li>احتفظ بالأدلة دون إعادة نشرها.</li>
+        <li>أخبر شخصًا بالغًا موثوقًا واطلب المساعدة.</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h3>📩 إذا شاركت معلوماتك الشخصية بالخطأ</h3>
+      <ul>
+        <li>أخبر شخصًا بالغًا تثق به.</li>
+        <li>راجع إعدادات الخصوصية.</li>
+        <li>غيّر كلمات المرور إذا كانت ضمن المعلومات التي شاركتها.</li>
+        <li>اطلب المساعدة من المنصة المعنية.</li>
+      </ul>
+    </div>
+
+    <div class="buttons">
+      <button class="back" onclick="go(5)">السابق</button>
+      <button class="primary" onclick="go(7)">التالي</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 7: REVIEW -->
+<section class="page" id="page7">
+  <div class="card">
+    <h2>🧠 هل فهمت الدرس؟</h2>
+    <p>قبل الاختبار، تذكّر أهم الأفكار التي تعلّمناها.</p>
+
+    <div class="info-card">
+      <h3>📌 ملخّص سريع</h3>
+      <p>🔹 لا تشارك معلوماتك الشخصية مع الغرباء.</p>
+      <p>🔹 لا تفتح الروابط المشبوهة.</p>
+      <p>🔹 استعمل كلمات مرور قوية.</p>
+      <p>🔹 لا تتفاعل مع التنمّر أو الابتزاز.</p>
+      <p>🔹 اطلب المساعدة من شخص بالغ تثق به.</p>
+      <p>🔹 تحقق من الأخبار قبل نشرها.</p>
+    </div>
+
+    <div class="buttons">
+      <button class="secondary" onclick="showRecap()">لم أفهم، أريد شرحًا أبسط 💡</button>
+      <button class="primary" onclick="startQuiz()">نعم، أنا مستعد للاختبار! 🚀</button>
+    </div>
+
+    <div id="simpleRecap" style="display:none" class="notice">
+      تخيّل أن الإنترنت مدينة كبيرة 🌍:
+      <p>🔑 كلمة المرور مثل مفتاح منزلك، لا تعطه لأي شخص.</p>
+      <p>🙈 معلوماتك الشخصية مثل أسرارك، لا تنشرها للجميع.</p>
+      <p>🔗 الرابط المجهول مثل باب لا تعرف ما وراءه، لا تفتحه دون التأكد.</p>
+      <p>🤝 إذا أزعجك أحد، اطلب المساعدة من شخص تثق به.</p>
+    </div>
+
+    <div class="buttons">
+      <button class="back" onclick="go(6)">السابق</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 8: QUIZ -->
+<section class="page" id="page8">
+  <div class="card">
+    <h2>🏆 اختبار أبطال CyberKids</h2>
+    <p>أجب عن الأسئلة العشرين واختبر معلوماتك في الأمن الرقمي!</p>
+
+    <div class="quiz-progress">
+      <div id="progressBar"></div>
+    </div>
+
+    <p id="questionCounter"></p>
+    <h3 id="questionText"></h3>
+
+    <div id="options"></div>
+
+    <div id="feedback" class="feedback"></div>
+
+    <div class="buttons">
+      <button class="primary" id="nextQuestion" onclick="nextQuestion()" disabled>السؤال التالي</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 9: RESULT -->
+<section class="page" id="page9">
+  <div class="card result">
+    <div style="font-size:75px" id="resultEmoji">🏆</div>
+    <h1 id="resultTitle"></h1>
+    <div class="result-score" id="finalScore"></div>
+    <p id="resultMessage"></p>
+
+    <div class="buttons" id="resultButtons"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  🛡️ CyberKids — نتعلّم اليوم لنحمي أنفسنا غدًا 💙
+</footer>
+
+<script>
+
+// NAVIGATION
+function go(number) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById('page' + number).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// SIMULATION
+function simulate(event) {
+  event.preventDefault();
+
+  document.getElementById('simulationForm').reset();
+
+  document.getElementById('simulationReveal').innerHTML = `
+    <div class="notice">
+      <h3>🛡️ توقّف! هذه كانت محاكاة تعليمية.</h3>
+      <p>
+        لا يجب مشاركة المعلومات الشخصية مع المواقع أو الأشخاص غير الموثوق بهم.
+        في هذا الاختبار لم يتم إرسال أي معلومات أو حفظها.
+      </p>
+      <p><b>تذكّر: خصوصيتك مسؤوليتك، ومعلوماتك ملكك!</b></p>
+    </div>
+  `;
+}
+
+function safeChoice() {
+  document.getElementById('simulationReveal').innerHTML = `
+    <div class="info-card">
+      <h3>🌟 أحسنت الاختيار!</h3>
+      <p>رفض مشاركة معلوماتك الشخصية قرار ذكي. حماية الخصوصية تبدأ بالتفكير قبل الضغط!</p>
+    </div>
+  `;
+}
+
+// REVIEW
+function showRecap() {
+  const recap = document.getElementById('simpleRecap');
+  recap.style.display = recap.style.display === 'none' ? 'block' : 'none';
+}
+
+// QUIZ DATA
+const questions = [
+  {
+    q: "ما المقصود بالتصيّد الإلكتروني؟",
+    a: [
+      "رسائل أو مواقع مزيفة تحاول الحصول على معلوماتك",
+      "تحديث نظام الجهاز",
+      "حذف الملفات غير الضرورية",
+      "استعمال محرك البحث"
+    ],
+    c: 0
+  },
+  {
+    q: "وصلتك رسالة تخبرك أنك ربحت جائزة وتطلب بياناتك. ماذا تفعل؟",
+    a: [
+      "أتحقق من المصدر ولا أشارك معلوماتي",
+      "أرسل المعلومات بسرعة",
+      "أشارك الرابط مع أصدقائي",
+      "أدخل بيانات حسابي للتأكد"
+    ],
+    c: 0
+  },
+  {
+    q: "أيّ من هذه المعلومات يجب حمايتها؟",
+    a: [
+      "رقم الهاتف والعنوان",
+      "اسم كتاب مدرسي",
+      "عنوان قصة مشهورة",
+      "اسم مادة دراسية"
+    ],
+    c: 0
+  },
+  {
+    q: "ما أفضل طريقة لحماية حسابك؟",
+    a: [
+      "كلمة مرور قوية والتحقق بخطوتين",
+      "استعمال كلمة مرور قصيرة وسهلة",
+      "مشاركة كلمة المرور مع الأصدقاء",
+      "استعمال نفس كلمة المرور في كل مكان"
+    ],
+    c: 0
+  },
+  {
+    q: "ماذا يعني التنمّر الإلكتروني؟",
+    a: [
+      "إيذاء شخص أو مضايقته عبر الإنترنت",
+      "التعلم من الدروس الرقمية",
+      "مشاركة معلومات مفيدة",
+      "التواصل المحترم مع الآخرين"
+    ],
+    c: 0
+  },
+  {
+    q: "ما التصرف المناسب عند استلام رابط من مصدر مجهول؟",
+    a: [
+      "التحقق من مصدره قبل فتحه",
+      "فتحه مباشرة إذا كان عنوانه قصيرًا",
+      "إرساله إلى الأصدقاء لتجربته",
+      "إدخال كلمة المرور إذا طلبها الموقع"
+    ],
+    c: 0
+  },
+  {
+    q: "ما معنى انتحال الشخصية على الإنترنت؟",
+    a: [
+      "التظاهر بأنك شخص آخر باستعمال هويته",
+      "تغيير صورة الخلفية",
+      "إنشاء حساب شخصي باسمك",
+      "تغيير إعدادات اللغة"
+    ],
+    c: 0
+  },
+  {
+    q: "إذا تعرضت للتنمّر الإلكتروني، ما أفضل تصرف؟",
+    a: [
+      "أحتفظ بالأدلة وأخبر شخصًا بالغًا وأبلّغ عن الحساب",
+      "أرد بالإساءة نفسها",
+      "أنشر معلومات الشخص",
+      "أشارك المشكلة مع الغرباء"
+    ],
+    c: 0
+  },
+  {
+    q: "لماذا يجب تحديث التطبيقات ونظام الجهاز؟",
+    a: [
+      "لإصلاح أخطاء وتحسين الحماية",
+      "لجعل كلمة المرور معروفة للجميع",
+      "لإلغاء إعدادات الخصوصية",
+      "للسماح للغرباء بالدخول"
+    ],
+    c: 0
+  },
+  {
+    q: "ما المقصود بالبرمجيات الضارة؟",
+    a: [
+      "برامج قد تضر الجهاز أو تهدد بياناته",
+      "برامج الرسم والتصميم فقط",
+      "تطبيقات تنظيم الوقت",
+      "ملفات الدروس المدرسية"
+    ],
+    c: 0
+  },
+  {
+    q: "وجدت حسابًا يستعمل صورتك ويتحدث باسمك. ما المشكلة؟",
+    a: [
+      "انتحال الشخصية",
+      "التصفح الآمن",
+      "التحديث التلقائي",
+      "التعلم الإلكتروني"
+    ],
+    c: 0
+  },
+  {
+    q: "ما التصرف الصحيح قبل نشر خبر على الإنترنت؟",
+    a: [
+      "التحقق من مصدره ومقارنته بمصادر موثوقة",
+      "نشره لأنه منتشر بكثرة",
+      "تغيير عنوانه ليبدو مثيرًا",
+      "إرساله دون قراءة محتواه"
+    ],
+    c: 0
+  },
+  {
+    q: "لماذا لا يُنصح باستعمال كلمة المرور نفسها في كل الحسابات؟",
+    a: [
+      "لأن اختراق حساب واحد قد يعرّض بقية الحسابات للخطر",
+      "لأنها تجعل الإنترنت أبطأ دائمًا",
+      "لأنها تمنع وصول الرسائل",
+      "لأنها تحذف الصور تلقائيًا"
+    ],
+    c: 0
+  },
+  {
+    q: "شخص لا تعرفه يطلب منك صورة أو معلومات خاصة. ماذا تفعل؟",
+    a: [
+      "أرفض وأخبر شخصًا بالغًا أثق به",
+      "أرسلها إذا بدا لطيفًا",
+      "أطلب منه معلوماته أولًا",
+      "أرسلها ثم أحذف المحادثة"
+    ],
+    c: 0
+  },
+  {
+    q: "ما المقصود بالخصوصية الرقمية؟",
+    a: [
+      "التحكم في معلوماتك الشخصية وكيفية مشاركتها",
+      "إظهار كل معلوماتك للعموم",
+      "استعمال الإنترنت دون كلمة مرور",
+      "إلغاء جميع إعدادات الجهاز"
+    ],
+    c: 0
+  },
+  {
+    q: "ما الذي يجعل كلمة المرور أكثر قوة؟",
+    a: [
+      "أن تكون طويلة ومتنوعة وصعبة التخمين",
+      "أن تحتوي على تاريخ الميلاد فقط",
+      "أن تكون اسم المستخدم نفسه",
+      "أن تكون سلسلة أرقام متتابعة"
+    ],
+    c: 0
+  },
+  {
+    q: "إذا تعرضت للابتزاز الإلكتروني، ما الخطوة الأنسب؟",
+    a: [
+      "عدم الاستجابة للتهديد وطلب مساعدة شخص بالغ موثوق",
+      "إرسال معلومات إضافية لإرضاء الشخص",
+      "مواجهة الشخص وحدي",
+      "إعادة نشر المحتوى للانتقام"
+    ],
+    c: 0
+  },
+  {
+    q: "ما فائدة التحقق بخطوتين؟",
+    a: [
+      "إضافة خطوة حماية أخرى عند تسجيل الدخول",
+      "إلغاء الحاجة إلى حماية الحساب",
+      "السماح لأي شخص بالدخول",
+      "مشاركة كلمة المرور مع الآخرين"
+    ],
+    c: 0
+  },
+  {
+    q: "لماذا يجب التفكير قبل نشر صورة أو معلومة؟",
+    a: [
+      "لأن المحتوى قد ينتشر ويصعب التحكم فيه بعد نشره",
+      "لأن كل ما ينشر يختفي بعد دقيقة",
+      "لأن المنشورات لا يراها أحد",
+      "لأن حذف المنشور يضمن اختفاء كل نسخه"
+    ],
+    c: 0
+  },
+  {
+    q: "ما السلوك الذي يجمع بين المسؤولية والأمان الرقمي؟",
+    a: [
+      "حماية المعلومات والتحقق من المصادر واحترام الآخرين",
+      "مشاركة كلمات المرور مع الأصدقاء",
+      "فتح كل الروابط الواردة",
+      "نشر أخبار دون التأكد منها"
+    ],
+    c: 0
+  }
+];
+
+// QUIZ STATE
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+let shuffledQuestions = [];
+
+function shuffle(array) {
+  const copy = [...array];
+
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
+function startQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
+  shuffledQuestions = questions.map(question => {
+    const correctAnswer = question.a[question.c];
+    const shuffledAnswers = shuffle(question.a);
+
+    return {
+      q: question.q,
+      a: shuffledAnswers,
+      c: shuffledAnswers.indexOf(correctAnswer)
+    };
+  });
+
+  go(8);
+  displayQuestion();
+}
+
+function displayQuestion() {
+  answered = false;
+
+  const question = shuffledQuestions[currentQuestion];
+
+  document.getElementById('questionCounter').textContent =
+    `السؤال ${currentQuestion + 1} من ${shuffledQuestions.length}`;
+
+  document.getElementById('questionText').textContent = question.q;
+
+  document.getElementById('progressBar').style.width =
+    `${(currentQuestion / shuffledQuestions.length) * 100}%`;
+
+  document.getElementById('feedback').style.display = 'none';
+
+  const optionsContainer = document.getElementById('options');
+  optionsContainer.innerHTML = '';
+
+  question.a.forEach((answer, index) => {
+    const button = document.createElement('button');
+    button.className = 'option';
+    button.textContent = answer;
+
+    button.onclick = () => selectAnswer(index, button);
+
+    optionsContainer.appendChild(button);
+  });
+
+  const nextButton = document.getElementById('nextQuestion');
+  nextButton.disabled = true;
+  nextButton.textContent =
+    currentQuestion === shuffledQuestions.length - 1
+      ? 'عرض النتيجة 🏆'
+      : 'السؤال التالي';
+}
+
+function selectAnswer(index, selectedButton) {
+  if (answered) return;
+
+  answered = true;
+
+  const question = shuffledQuestions[currentQuestion];
+  const buttons = document.querySelectorAll('.option');
+  const feedback = document.getElementById('feedback');
+
+  buttons.forEach(button => {
+    button.disabled = true;
+  });
+
+  if (index === question.c) {
+    score++;
+    selectedButton.classList.add('correct');
+
+    feedback.textContent = '🎉 إجابة صحيحة! أحسنت!';
+    feedback.style.background = '#e2f8ef';
+    feedback.style.color = '#16845f';
+  } else {
+    selectedButton.classList.add('wrong');
+    buttons[question.c].classList.add('correct');
+
+    feedback.textContent = '💡 ليست الإجابة الصحيحة. حاول التركيز في السؤال القادم!';
+    feedback.style.background = '#fff0f1';
+    feedback.style.color = '#b54858';
+  }
+
+  feedback.style.display = 'block';
+
+  document.getElementById('nextQuestion').disabled = false;
+}
+
+function nextQuestion() {
+  if (!answered) return;
+
+  currentQuestion++;
+
+  if (currentQuestion < shuffledQuestions.length) {
+    displayQuestion();
+  } else {
+    showResult();
+  }
+}
+
+// RESULTS
+function showResult() {
+  go(9);
+
+  document.getElementById('progressBar').style.width = '100%';
+
+  document.getElementById('finalScore').textContent =
+    `${score} / 20`;
+
+  const title = document.getElementById('resultTitle');
+  const message = document.getElementById('resultMessage');
+  const emoji = document.getElementById('resultEmoji');
+  const buttons = document.getElementById('resultButtons');
+
+  buttons.innerHTML = '';
+
+  if (score >= 15) {
+    emoji.textContent = '🏆';
+    title.textContent = 'أفضل طفل في عالم CyberKids!';
+    message.textContent =
+      'مبروك! لقد أثبتّ أنك بطل رقمي يعرف كيف يحمي نفسه ويحترم الآخرين. واصل التعلّم!';
+    
+    const homeButton = document.createElement('button');
+    homeButton.className = 'primary';
+    homeButton.textContent = 'العودة إلى البداية 🏠';
+    homeButton.onclick = () => go(1);
+
+    buttons.appendChild(homeButton);
+  } else {
+    emoji.textContent = '💪';
+    title.textContent = 'لا تستسلم، تستطيع التحسّن!';
+    message.textContent =
+      'راجع الدرس والملخّص مرة أخرى، ثم أعد الاختبار. كل محاولة تقرّبك من النجاح!';
+
+    const reviewButton = document.createElement('button');
+    reviewButton.className = 'secondary';
+    reviewButton.textContent = 'مراجعة الدرس 📚';
+    reviewButton.onclick = () => go(7);
+
+    const retryButton = document.createElement('button');
+    retryButton.className = 'primary';
+    retryButton.textContent = 'إعادة الاختبار 🔄';
+    retryButton.onclick = () => startQuiz();
+
+    buttons.appendChild(reviewButton);
+    buttons.appendChild(retryButton);
+  }
+}
+
+</script>
+
+</body>
+</html>
